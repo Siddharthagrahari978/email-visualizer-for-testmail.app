@@ -1,0 +1,17 @@
+<div class="container api-details">
+	<div>
+		<h2>Email Visualizer for <a href="https://testmail.app" target="_blank">Testmail.app</a></h2>
+		<form [formGroup]="form">
+			<mat-form-field appearance="outline">
+				<mat-label>API Url</mat-label>
+				<input matInput formControlName="api_url" placeholder="https://api.testmail.app/api/json?apikey=<API_KEY>&namespace=<NAMESPACE>&pretty=true">
+				<mat-icon matSuffix fontIcon="sentiment_very_satisfied"></mat-icon>
+				<mat-hint>You need to paste the VIEW EMAIL(JSON) url here.</mat-hint>
+				<mat-error>Please enter a valid API Url.</mat-error>
+			</mat-form-field>
+		</form>
+	</div>
+	<div class="d-flex justify-content-center mt-3">
+		<button [disabled]="form.invalid" mat-raised-button (click)="submit()">Basic</button>
+	</div>
+</div>

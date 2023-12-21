@@ -1,0 +1,8 @@
+::ng-deep.view-emails {
+  .container{
+    min-width: calc( 100vw - 100px );
+  }
+  .mat-mdc-card-header-text{
+    width:100% !important;
+  }
+}
