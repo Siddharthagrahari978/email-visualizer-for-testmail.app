@@ -1,1 +1,27 @@
-<p>preview-email works!</p>
+<div class="preview-email p-4">
+  <div class="header d-flex justify-content-between">
+    <h1>{{data.subject}}</h1>
+    <button type="button" matTooltip="close" class="btn text-danger p-0" (click)="dialogRef.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>From:</mat-label>
+      <input matInput [value]="data.from" readonly>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>To:</mat-label>
+      <input matInput [value]="data.to" readonly>
+    </mat-form-field>
+    <mat-form-field *ngIf="data.cc!=''" class="w-100" appearance="outline">
+      <mat-label>CC:</mat-label>
+      <input matInput [value]="data.cc" readonly>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Body:</mat-label>
+      <input matInput [value]="data.html" hidden>
+      <iframe id="body" frameborder="0"></iframe>
+    </mat-form-field>
+  </form>
+</div>

@@ -1,17 +1,46 @@
 <div class="view-emails">
-  <div class="container mb-2"></div>
-  <div class="container">
-    <div *ngFor="let email of emails">
+  <div class="container mb-2 d-lg-flex justify-content-between filter">
+    <form class="filters-form d-md-flex" [formGroup]="filters">
+      <mat-form-field appearance="outline">
+        <mat-label>Search by Tag</mat-label>
+        <input matInput formControlName="tag">
+        <mat-icon matPrefix fontIcon="search"></mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>From Date</mat-label>
+        <input matInput [max]="today" formControlName="timestamp_from" [matDatepicker]="picker1" placeholder="MM/DD/YYYY">
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>To Date</mat-label>
+        <input matInput [max]="today" formControlName="timestamp_to" [matDatepicker]="picker2" placeholder="MM/DD/YYYY">
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </form>
+    <div class="d-lg-block d-flex justify-content-center">
+      <button mat-fab (click)="filter()" color="primary"><mat-icon>search</mat-icon></button>
+      <button mat-fab (click)="reset_filter()" color="basic"><mat-icon>refresh</mat-icon></button>
+    </div>
+  </div>
+  <div class="container emails">
+    <div class="mb-1 cursor-pointer" *ngFor="let email of emails" (click)="previewMail(email)">
       <mat-card>
         <mat-card-header>
-          <mat-card-title class="fw-bold">{{email.subject}}</mat-card-title>
+          <mat-card-title><span class="fw-bold">{{email.subject}}</span> - <span
+              class="fs-6 text-body-secondary">{{email.date | date:'MM/dd/yyyy hh:mm a'}}</span></mat-card-title>
           <mat-card-subtitle class="d-flex justify-content-between">
-            <span>To: {{email.envelope_to}}</span>
-            <span>From: {{email.envelope_from}}</span>
+            <span [matTooltip]="email.to_parsed[0].address">To: {{email.to_parsed[0].name}}</span>
+            <span [matTooltip]="email.from_parsed[0].address">From: {{email.from_parsed[0].name}}</span>
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content></mat-card-content>
       </mat-card>
     </div>
+    <mat-paginator [pageIndex]="paginator.pageIndex" [length]="paginator.length" [pageSize]="paginator.pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]" (page)="page($event)" aria-label="Select page">
+    </mat-paginator>
+
   </div>
 </div>

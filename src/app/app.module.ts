@@ -17,6 +17,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTooltipModule} from '@angular/material/tooltip'
+import {MatDialogModule} from '@angular/material/dialog';
+
 import { PreviewEmailComponent } from './components/view-emails/preview-email/preview-email.component';
 
 
@@ -43,6 +49,10 @@ import { PreviewEmailComponent } from './components/view-emails/preview-email/pr
     MatSnackBarModule,
     MatListModule,
     MatCardModule,
+    MatDatepickerModule, MatNativeDateModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatDialogModule,
 
 
 

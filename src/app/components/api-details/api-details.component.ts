@@ -12,17 +12,21 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ApiDetailsComponent {
   constructor(private fb:FormBuilder, private api:ApiService,private _snackBar: MatSnackBar, private router:Router){
-    localStorage.removeItem('API_URL');
+    localStorage.removeItem('API_KEY');
+    localStorage.removeItem('NAMESPACE')
   }
   form = this.fb.group({
-    api_url:['', Validators.required]
+    api_key:['', Validators.required],
+    namespace:['', Validators.required]
   })
   submit(){
-    if(this.form.value.api_url){
-      this.api.get(this.form.value.api_url).subscribe({
+    if(this.form.valid){
+      let url = `https://api.testmail.app/api/json?apikey=${this.form.value.api_key}&namespace=${this.form.value.namespace}`
+      this.api.get(url).subscribe({
         next:(res)=>{
           this._snackBar.open('Successfully added the API URL.');
-          localStorage.setItem('API_URL', this.form.value.api_url?this.form.value.api_url:'')
+          localStorage.setItem('API_KEY', this.form.value.api_key?this.form.value.api_key:'')
+          localStorage.setItem('NAMESPACE', this.form.value.namespace?this.form.value.namespace:'')
           this.router.navigate(['/viewemails'])
         },
         error:this.error

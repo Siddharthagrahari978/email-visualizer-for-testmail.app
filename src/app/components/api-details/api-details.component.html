@@ -3,15 +3,22 @@
 		<h2>Email Visualizer for <a href="https://testmail.app" target="_blank">Testmail.app</a></h2>
 		<form [formGroup]="form">
 			<mat-form-field appearance="outline">
-				<mat-label>API Url</mat-label>
-				<input matInput formControlName="api_url" placeholder="https://api.testmail.app/api/json?apikey=<API_KEY>&namespace=<NAMESPACE>&pretty=true">
-				<mat-icon matSuffix fontIcon="sentiment_very_satisfied"></mat-icon>
-				<mat-hint>You need to paste the VIEW EMAIL(JSON) url here.</mat-hint>
-				<mat-error>Please enter a valid API Url.</mat-error>
+				<mat-label>API Key</mat-label>
+				<input matInput formControlName="api_key">
+				<mat-icon matSuffix fontIcon="vpn_key"></mat-icon>
+				<mat-hint>Please enter your API Key from the Testmail.app website here.</mat-hint>
+				<mat-error>Please enter a valid API Key.</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Namespace</mat-label>
+				<input matInput formControlName="namespace">
+				<mat-icon matSuffix fontIcon="markunread_mailbox"></mat-icon>
+				<mat-hint>Enter the namespace here.</mat-hint>
+				<mat-error>Please enter a valid Namespace.</mat-error>
 			</mat-form-field>
 		</form>
 	</div>
 	<div class="d-flex justify-content-center mt-3">
-		<button [disabled]="form.invalid" mat-raised-button (click)="submit()">Basic</button>
+		<button [disabled]="form.invalid" mat-raised-button (click)="submit()">SUBMIT</button>
 	</div>
 </div>

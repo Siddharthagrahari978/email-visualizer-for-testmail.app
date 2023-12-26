@@ -1,8 +1,14 @@
 .api-details{
     form{
-        display: contents;
         mat-form-field{
-            width: 100%;
+            width: 100% !important;
+            margin-bottom: 15px !important;
         }
     }
+    @media(max-width:501px) {.container {
+		border-radius: none;
+		height: 100vh;
+		width: 100vw;
+		padding: 15px;
+	}}
 }

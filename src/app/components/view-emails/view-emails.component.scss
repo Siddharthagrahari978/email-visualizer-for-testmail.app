@@ -1,8 +1,28 @@
-::ng-deep.view-emails {
+:host ::ng-deep.view-emails {
   .container{
     min-width: calc( 100vw - 100px );
   }
   .mat-mdc-card-header-text{
     width:100% !important;
   }
+  .filters-form{
+    gap: 8px;
+  }
+  button{
+    margin-inline: 5px;
+  }
+  @media(max-width:501px) {
+    .container{
+      padding: 15px !important;
+      width: 100vw;
+    }
+    .container.emails {
+      height: calc(100vh - 320px) !important;
+    }
+    .container.filter{
+      mat-form-field{
+        min-width: 100% !important;
+      }
+    }
+}
 }
